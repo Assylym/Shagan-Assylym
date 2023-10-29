@@ -19,6 +19,9 @@ private static String readJsonFromUrl(String url) throws IOException, JSONExcept
         String countryAndPlace = place + ", " + country;
         String apiKey = "1ac243558e0502f0067669513e9ae497";    
         String apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + countryAndPlace + "&appid=" + apiKey;
+        //This is the main method of the program, where execution begins.
+It starts by creating a Scanner for user input and then prompts the user to enter a city and country.
+The user input is combined into countryAndPlace, and the OpenWeatherMap API URL is constructed with the API key.//
         try {
             String json = readJsonFromUrl(apiUrl);       
             JSONObject jsonObject = new JSONObject(json);
@@ -29,6 +32,9 @@ private static String readJsonFromUrl(String url) throws IOException, JSONExcept
             double temp = main.getDouble("temp") - 273.15;
             int humidity = main.getInt("humidity");     
             double windSpeed = wind.getDouble("speed");
+            //Inside a try-catch block, it makes an HTTP request to the OpenWeatherMap API using the apiUrl.
+It reads the JSON response into the json string.
+The JSON response is then parsed using the JSONObject class to extract weather information such as status, temperature, humidity, and wind speed.//
             System.out.println("В городе " + place + " сейчас " + status);
             System.out.println("Температура " + Math.round(temp) + " градусов по Цельсию");    
             System.out.println("Влажность составляет " + humidity + "%");
